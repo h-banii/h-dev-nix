@@ -15,6 +15,8 @@
         mkFormatter = pkgsFor.${system}.callPackage ./pkgs/make-formatter.nix { };
       });
 
+      lib = import ./lib { inherit lib; };
+
       formatter = forAllSystems (system: pkgsFor.${system}.nixfmt-tree);
     };
 }
