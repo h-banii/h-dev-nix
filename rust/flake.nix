@@ -39,7 +39,11 @@
           h-lib = inputs.h-dev.lib;
         in
         {
-          inherit (pkgs.callPackage ./pkgs { inherit craneLib h-lib; }) buildRustPackage buildBevyPackage;
+          inherit (pkgs.callPackage ./pkgs { inherit craneLib h-lib; })
+            buildRustPackage
+            buildBevyPackage
+            wrapVulkanLoader
+            ;
         }
       );
 
