@@ -6,7 +6,7 @@
 }:
 package:
 symlinkJoin {
-  name = package.pname;
+  inherit (package) name;
 
   paths = [ package ];
 
