@@ -13,7 +13,7 @@ symlinkJoin {
   nativeBuildInputs = [ makeWrapper ];
 
   postBuild = ''
-    wrapProgram $out/bin/nvim \
+    wrapProgram $out/bin/${package.name} \
       --prefix LD_LIBRARY_PATH : "${
         lib.makeLibraryPath [
           vulkan-loader
