@@ -1,5 +1,5 @@
 {
-  default,
+  rust-shell,
 
   lib,
   mkShell,
@@ -21,8 +21,8 @@
 mkShell {
   name = "h-dev-rust-gui";
 
-  inputsFrom = [ default ];
-  inherit (default) RUST_SRC_PATH;
+  inputsFrom = [ rust-shell ];
+  inherit (rust-shell) RUST_SRC_PATH;
 
   packages = [
     openssl

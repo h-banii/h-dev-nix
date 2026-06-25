@@ -1,7 +1,5 @@
 {
-  packages ? [ ],
-
-  default,
+  rust-shell,
 
   mkShell,
 
@@ -19,8 +17,8 @@ in
 mkShell {
   name = "nymphy-gtk-shell";
 
-  inputsFrom = [ default ];
-  inherit (default) RUST_SRC_PATH;
+  inputsFrom = [ rust-shell ];
+  inherit (rust-shell) RUST_SRC_PATH;
 
   packages = [
     gtk4

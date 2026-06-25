@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  rootShell =
+  base =
     { mkShell, pkgs }:
     mkShell {
       name = "h-dev-rust";
@@ -22,8 +22,8 @@ let
     };
 in
 pkgs.lib.makeScope pkgs.newScope (self: {
-  default = self.packages.default;
-  rust-shell = self.callPackage rootShell { };
+  default = self.packages.rust-shell;
+  rust-shell = self.callPackage base { };
   rust-gui-shell = self.callPackage ./gui.nix { };
   rust-gtk-shell = self.callPackage ./gtk.nix { };
 })
