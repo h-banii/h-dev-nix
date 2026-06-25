@@ -2,6 +2,7 @@
   lib,
   h-lib,
   flake-inputs,
+  pkgs,
 
   writeText,
   runCommandLocal,
@@ -14,11 +15,11 @@
   strictDeps ? true,
   cargoWorkspaceHack ? null,
   cargoExtraArgs ? "",
-  pkgs,
+  cranePkgs ? pkgs,
   ...
 }@args:
 let
-  craneLib = flake-inputs.crane.mkLib pkgs;
+  craneLib = flake-inputs.crane.mkLib cranePkgs;
 
   filteredSource =
     with lib.fileset;
