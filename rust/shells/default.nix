@@ -22,7 +22,8 @@ let
     };
 in
 pkgs.lib.makeScope pkgs.newScope (self: {
-  default = self.callPackage rootShell { };
+  default = self.packages.default;
+  rustShell = self.callPackage rootShell { };
   rustGuiShell = self.callPackage ./gui.nix { };
   rustGtkShell = self.callPackage ./gtk.nix { };
 })
