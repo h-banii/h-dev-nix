@@ -35,11 +35,14 @@
         system:
         let
           pkgs = pkgsFor.${system};
-          craneLib = inputs.crane.mkLib pkgs;
           h-lib = inputs.h-dev.lib;
         in
         {
-          inherit (pkgs.callPackage ./pkgs { inherit craneLib h-lib; })
+          inherit
+            (pkgs.callPackage ./pkgs {
+              inherit h-lib;
+              flake-inputs = inputs;
+            })
             buildRustPackage
             buildBevyPackage
             wrapVulkanLoader
