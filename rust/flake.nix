@@ -23,7 +23,7 @@
     in
     {
       devShells = forAllSystems (system: {
-        inherit (pkgsFor.${system}.callPackage ./shells { }) default gui;
+        inherit (pkgsFor.${system}.callPackage ./shells { }) default rustGuiShell rustGtkShell;
       });
 
       legacyPackages = forAllSystems (
