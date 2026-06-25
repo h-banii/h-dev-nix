@@ -2,7 +2,11 @@
   description = "Rust dev shells, builders, etc.";
 
   inputs = {
-    h-dev.url = "path:../.";
+    h-dev = {
+      url = "path:../.";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
     crane.url = "github:ipetkov/crane";
   };
 
