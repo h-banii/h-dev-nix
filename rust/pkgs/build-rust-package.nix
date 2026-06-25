@@ -12,7 +12,7 @@
   srcs ? [ ],
   exts ? [ ],
   strictDeps ? true,
-  workspaceHack ? null,
+  cargoWorkspaceHack ? null,
   cargoExtraArgs ? "",
   ...
 }@args:
@@ -41,7 +41,7 @@ let
       "exts"
     ])
     // {
-      cargoExtraArgs = if workspaceHack == null then "-p ${pname}" else "-p ${workspaceHack}";
+      cargoExtraArgs = if cargoWorkspaceHack == null then "-p ${pname}" else "-p ${cargoWorkspaceHack}";
       src = filteredSource;
     }
   );
