@@ -7,10 +7,13 @@
   runCommandLocal,
 }:
 {
+  pname,
   src ? null,
   srcs ? [ ],
   exts ? [ ],
   strictDeps ? true,
+  workspaceHack ? null,
+  cargoExtraArgs ? "",
   ...
 }@args:
 let
@@ -31,11 +34,14 @@ let
 
   cargoArtifacts = craneLib.buildDepsOnly (
     (builtins.removeAttrs args [
+      "cargoExtraArgs"
+      "workspaceHack"
       "pname"
       "srcs"
       "exts"
     ])
     // {
+      cargoExtraArgs = if workspaceHack == null then "-p ${pname}" else "-p ${workspaceHack}";
       src = filteredSource;
     }
   );
@@ -44,6 +50,7 @@ craneLib.buildPackage (
   args
   // {
     src = filteredSource;
+    cargoExtraArgs = "-p ${pname}" ++ cargoExtraArgs;
     inherit cargoArtifacts;
     inherit (craneLib.crateNameFromCargoToml { src = filteredSource; }) version;
     doCheck = false;
