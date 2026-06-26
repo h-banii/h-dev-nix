@@ -50,6 +50,6 @@ craneLib.cargoDoc (
     pname = "${pname}-docs";
     src = filteredSource;
     inherit cargoArtifacts;
-    cargoExtraArgs = "-p ${pname} --lib" + cargoExtraArgs;
+    cargoExtraArgs = "-p ${pname} --lib " + cargoExtraArgs;
   }
 )

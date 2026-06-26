@@ -48,7 +48,7 @@ craneLib.buildPackage (
   args
   // {
     src = filteredSource;
-    cargoExtraArgs = "-p ${pname}" + cargoExtraArgs;
+    cargoExtraArgs = "-p ${pname} " + cargoExtraArgs;
     inherit cargoArtifacts;
     inherit (craneLib.crateNameFromCargoToml { src = filteredSource; }) version;
     doCheck = false;
