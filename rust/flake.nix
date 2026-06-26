@@ -43,8 +43,9 @@
               inherit h-lib;
               flake-inputs = inputs;
             })
-            buildRustPackage
             buildBevyPackage
+            buildRustDocs
+            buildRustPackage
             wrapVulkanLoader
             ;
         }

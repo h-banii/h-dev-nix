@@ -12,7 +12,6 @@
   src ? null,
   srcs ? [ ],
   exts ? [ ],
-  strictDeps ? true,
   cargoWorkspaceHack ? null,
   cargoExtraArgs ? "",
   cranePkgs ? pkgs,
@@ -44,20 +43,13 @@ let
     }
   );
 in
-craneLib.buildPackage (
+
+craneLib.cargoDoc (
   args
   // {
+    pname = "${pname}-docs";
     src = filteredSource;
-    cargoExtraArgs = "-p ${pname}" + cargoExtraArgs;
     inherit cargoArtifacts;
-    inherit (craneLib.crateNameFromCargoToml { src = filteredSource; }) version;
-    doCheck = false;
-
-    passthru = {
-      docs = craneLib.cargoDoc {
-        src = filteredSource;
-        inherit cargoArtifacts;
-      };
-    };
+    cargoExtraArgs = "-p ${pname} --libs --no-deps" + cargoExtraArgs;
   }
 )
