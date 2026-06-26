@@ -15,5 +15,6 @@ mkShell {
     wild-unwrapped
 
     cargo-audit
+    cargo-machete
   ];
 }
