@@ -8,13 +8,13 @@
   runCommandLocal,
 }:
 {
-  pname,
+  pname, # removeAttrs
   src ? null,
-  srcs ? [ ],
-  exts ? [ ],
+  srcs ? [ ], # removeAttrs
+  exts ? [ ], # removeAttrs
   strictDeps ? true,
-  cargoWorkspaceHack ? null,
-  cargoExtraArgs ? "",
+  cargoWorkspaceHack ? null, # removeAttrs
+  cargoExtraArgs ? "", # removeAttrs
   cranePkgs ? pkgs,
   ...
 }@args:
@@ -39,7 +39,7 @@ let
   cargoArtifacts = craneLib.buildDepsOnly (
     (builtins.removeAttrs args [
       "cargoExtraArgs"
-      "workspaceHack"
+      "cargoWorkspaceHack"
       "pname"
       "srcs"
       "exts"

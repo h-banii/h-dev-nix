@@ -4,12 +4,12 @@
   ...
 }:
 {
-  bevyAssets ? null,
+  bevyAssets ? null, # removeAttrs
   pname,
   ...
 }@args:
 let
-  package = buildRustPackage (builtins.removeAttrs args [ "assets" ]);
+  package = buildRustPackage (builtins.removeAttrs args [ "bevyAssets" ]);
 in
 runCommandLocal pname { passthru.unwrapped = package; } (
   ''
