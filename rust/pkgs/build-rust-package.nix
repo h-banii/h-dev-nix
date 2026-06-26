@@ -58,5 +58,12 @@ craneLib.buildPackage (
     inherit cargoArtifacts;
     inherit (craneLib.crateNameFromCargoToml { src = filteredSource; }) version;
     doCheck = false;
+
+    passthru = {
+      docs = craneLib.cargoDoc {
+        src = filteredSource;
+        inherit cargoArtifacts;
+      };
+    };
   }
 )
