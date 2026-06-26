@@ -22,9 +22,9 @@
       pkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
     in
     {
-      devShells = forAllSystems (system: {
+      devShells = forAllSystems (system: rec {
+        default = rust-shell;
         inherit (pkgsFor.${system}.callPackage ./shells { })
-          default
           rust-shell
           rust-gtk-shell
           rust-gui-shell
