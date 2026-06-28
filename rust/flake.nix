@@ -3,7 +3,7 @@
 
   inputs = {
     h-dev = {
-      url = "path:../.";
+      url = "github:h-banii/h-dev-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };

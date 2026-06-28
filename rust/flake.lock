@@ -25,14 +25,18 @@
         ]
       },
       "locked": {
-        "path": "../.",
-        "type": "path"
+        "lastModified": 1782547151,
+        "narHash": "sha256-0hQPoEWonWEJvC7RtZAw6OYWd/G7aw8lrtJnWrjVNKk=",
+        "owner": "h-banii",
+        "repo": "h-dev-nix",
+        "rev": "3883dbfbcef825e18c5cade7dcd4e78506d997e7",
+        "type": "github"
       },
       "original": {
-        "path": "../.",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "h-banii",
+        "repo": "h-dev-nix",
+        "type": "github"
+      }
     },
     "nixpkgs": {
       "locked": {
