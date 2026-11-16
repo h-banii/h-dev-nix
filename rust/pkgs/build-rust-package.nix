@@ -13,6 +13,7 @@
   srcs ? [ ],
   exts ? [ ],
   strictDeps ? true,
+  cargoPackage ? pname,
   cargoWorkspaceHack ? null,
   cargoExtraArgs ? "",
   cranePkgs ? pkgs,
@@ -39,7 +40,7 @@ let
   cargoArtifacts = craneLib.buildDepsOnly (
     args
     // {
-      cargoExtraArgs = if cargoWorkspaceHack == null then "-p ${pname}" else "-p ${cargoWorkspaceHack}";
+      cargoExtraArgs = if cargoWorkspaceHack == null then "-p ${cargoPackage}" else "-p ${cargoWorkspaceHack}";
       src = filteredSource;
     }
   );
@@ -48,7 +49,7 @@ craneLib.buildPackage (
   args
   // {
     src = filteredSource;
-    cargoExtraArgs = "-p ${pname} " + cargoExtraArgs;
+    cargoExtraArgs = "-p ${cargoPackage} " + cargoExtraArgs;
     inherit cargoArtifacts;
     inherit (craneLib.crateNameFromCargoToml { src = filteredSource; }) version;
     doCheck = false;
